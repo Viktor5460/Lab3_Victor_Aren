@@ -20,7 +20,7 @@ int partition(int arr[], int low, int high, int iteration) {
     arr[high] = temp;
 
     // Create an output file for the current iteration
-    char filename[20];
+    char filename[30];
     snprintf(filename, sizeof(filename), "quick_iteration_%d.txt", iteration);
     FILE *outputFile = fopen(filename, "w");
     if (outputFile == NULL) {
@@ -28,9 +28,9 @@ int partition(int arr[], int low, int high, int iteration) {
         exit(1);
     }
 
-    // Write the current state of the array to the output file
-    for (int k = 0; k < high + 1; k++) {
-        fprintf(outputFile, "%d\n", arr[k]);
+    // Write the current state of the array to the output file with line numbers
+    for (int k = 0; k <= high; k++) {
+        fprintf(outputFile, "%d %d\n", k + 1, arr[k]); // Line number and value
     }
 
     // Close the output file
@@ -95,6 +95,6 @@ int main() {
     // Free allocated memory
     free(arr);
 
-    printf("Sorting completed. Check iteration files for results.\n");
+    printf("Sorting completed. Check the iteration files for results.\n");
     return 0;
 }

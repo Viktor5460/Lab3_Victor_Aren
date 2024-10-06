@@ -18,7 +18,7 @@ void selectionSort(int arr[], int n) {
         arr[i] = temp;
 
         // Create an output file for the current iteration
-        char filename[20];
+        char filename[30];
         snprintf(filename, sizeof(filename), "selection_iteration_%d.txt", i + 1);
         FILE *outputFile = fopen(filename, "w");
         if (outputFile == NULL) {
@@ -26,9 +26,9 @@ void selectionSort(int arr[], int n) {
             exit(1);
         }
 
-        // Write the current state of the array to the output file
+        // Write the current state of the array to the output file with line numbers
         for (int k = 0; k < n; k++) {
-            fprintf(outputFile, "%d\n", arr[k]);
+            fprintf(outputFile, "%d %d\n", k + 1, arr[k]); // Line number and value
         }
 
         // Close the output file
@@ -56,7 +56,7 @@ int main() {
         return 1;
     }
 
-    // Read numbers from file
+    // Read numbers from the file
     while (fscanf(inputFile, "%d", &num) == 1) {
         if (count >= capacity) {
             // Resize the array if needed

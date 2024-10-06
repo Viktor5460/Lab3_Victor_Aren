@@ -55,9 +55,9 @@ void merge(int arr[], int left, int mid, int right, int iteration) {
         exit(1);
     }
 
-    // Write the current state of the array to the output file
-    for (int m = 0; m <= right; m++) {
-        fprintf(outputFile, "%d\n", arr[m]);
+    // Write the current state of the array to the output file with line numbers
+    for (int m = left; m <= right; m++) {
+        fprintf(outputFile, "%d %d\n", m - left + 1, arr[m]); // Line number and value
     }
 
     // Close the output file
